@@ -3,7 +3,7 @@ import apiService from '../../services/events-api'
 import { withAuth } from "../..//lib/AuthProvider";
 import { Link } from 'react-router-dom';
 import EditEvent from './EditEvent';
-
+import axios from "axios";
 
 class EventDetails extends Component {
     constructor(props){

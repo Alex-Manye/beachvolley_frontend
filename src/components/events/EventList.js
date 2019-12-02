@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { withAuth } from "../..//lib/AuthProvider";
 import apiService from '../../services/events-api'
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 import AddEvent from "./AddEvent"; // <== !!!
 
 class EventList extends Component {

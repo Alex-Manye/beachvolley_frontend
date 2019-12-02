@@ -24,7 +24,6 @@ class EditEvent extends Component {
     const time = this.state.time;
     const description = this.state.description;
 
-
     axios
       .put(`http://localhost:4000/projects/${this.props.theEvent._id}`, {
         eventName, teams, location, day, time, description
