@@ -17,7 +17,6 @@ class Signup extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const { teamName, email, password, playerName1, dniPlayer1, playerName2, dniPlayer2  } = this.state;
-    //console.log('Signup -> form submit', { username, password });
     this.props.signup({ teamName, email, password, playerName1, dniPlayer1, playerName2, dniPlayer2 });
   };
 
@@ -29,31 +28,31 @@ class Signup extends Component {
   render() {
     const { teamName, email, password, playerName1, dniPlayer1, playerName2, dniPlayer2 } = this.state;
     return (
-      <div className="formulario">
+      <div className="signup-container">
         <form onSubmit={this.handleFormSubmit}>
 
           <label>Team Name:</label>
-          <input type="text" name="teamName" value={teamName} onChange={this.handleChange} />
+          <input type="text" name="teamName" placeholder="Team Name" value={teamName} onChange={this.handleChange} />
         
           <label>email:</label>
-          <input type="text" name="email" value={email} onChange={this.handleChange} />
+          <input type="text" name="email" placeholder="email" value={email} onChange={this.handleChange} />
 
           <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />  
+          <input type="password" name="password" placeholder="password" value={password} onChange={this.handleChange} />  
 
           <label>Name 1st player:</label>
-          <input type="text" name="playerName1" value={playerName1} onChange={this.handleChange} />
+          <input type="text" name="playerName1" placeholder="Name first player" value={playerName1} onChange={this.handleChange} />
 
           <label>DNI 1st player:</label>
-          <input type="text" name="dniPlayer1" value={dniPlayer1} onChange={this.handleChange} />
+          <input type="text" name="dniPlayer1" placeholder="DNI first player" value={dniPlayer1} onChange={this.handleChange} />
 
           <label>Name 2nd player:</label>
-          <input type="text" name="playerName2" value={playerName2} onChange={this.handleChange} />
+          <input type="text" name="playerName2" placeholder="Name second player" value={playerName2} onChange={this.handleChange} />
 
           <label>DNI 2nd player:</label>
-          <input type="text" name="dniPlayer2" value={dniPlayer2} onChange={this.handleChange} />
+          <input type="text" name="dniPlayer2" placeholder="DNI second player" value={dniPlayer2} onChange={this.handleChange} />
 
-          <input type="submit" value="Signup" /> 
+          <input className="signup-button" type="submit" value="Signup" /> 
         </form>
         
         <p>Already have account?</p>

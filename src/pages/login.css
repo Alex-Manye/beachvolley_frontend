@@ -1,5 +1,15 @@
-.formu {
-    background: blue;
+form {
+    background: sandybrown;
     display: flex;
     flex-direction: column;
+    margin-top: 10px
+}
+
+.login-button{
+    margin-top: 10px;
+    background: rgb(114, 168, 6);
+    border-radius: 10px;
+    width: 50%;
+    color: white;
+
 }

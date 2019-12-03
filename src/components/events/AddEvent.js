@@ -15,7 +15,6 @@ class AddEvent extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("holaa")
     const eventName = this.state.eventName;
     const location = this.state.location;
     const day = this.state.day;

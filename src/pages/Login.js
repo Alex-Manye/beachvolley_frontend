@@ -8,7 +8,6 @@ class Login extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     const { teamName, password } = this.state;
-    // console.log('Login -> form submit', { teamName, password });
     this.props.login({ teamName, password });
   };
 
@@ -25,13 +24,13 @@ class Login extends Component {
       <form className="formu" onSubmit={this.handleFormSubmit}>
         
          <label>email:</label>
-          <input type="text" name="email" value={email} onChange={this.handleChange} />
+          <input type="text" name="email" value={email} placeholder="email" onChange={this.handleChange} />
 
           <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />  
+          <input type="password" name="password" placeholder="password" value={password} onChange={this.handleChange} />  
 
 
-        <input type="submit" value="Login" />
+        <input className="login-button" type="submit" value="Login" />
       </form>
       </div>
     );
@@ -39,3 +38,4 @@ class Login extends Component {
 }
 
 export default withAuth(Login);
+

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import apiService from '../../services/events-api'
-import { withAuth } from "../..//lib/AuthProvider";
+import apiService from '../../services/events-api';
+import { withAuth } from "../../lib/AuthProvider";
 import { Link } from 'react-router-dom';
 import EditEvent from './EditEvent';
 import axios from "axios";
@@ -11,19 +11,16 @@ class EventDetails extends Component {
         this.state = {theEvent: {}};
     }
 //componentDidMount() está ejecutando el método getSingleEvent() 
-//que inicialmente se comunica con nuestra ruta de back-end a través de 
-//la llamada axios.
+//que inicialmente se comunica con nuestra ruta de back-end a través de la llamada axios.
     async componentDidMount() {
       const { id } = this.props.match.params;
       const theEvent = await apiService.getOneEvent(id)
       this.setState({theEvent})
       }
       
-/*     getSingleEvent = () => {
-   
-        //match: retrieves data from the child component / preguntar T.A.
-        axios
-          .get(`http://localhost:4000/events/${params.id}`)
+    getOneEvent = () => {
+           axios
+          //.get(`http://localhost:4000/events/${params.id}`)
           .then(responseFromApi => {
             const theEvent = responseFromApi.data;
             this.setState(theEvent);
@@ -31,25 +28,22 @@ class EventDetails extends Component {
           .catch(err => {
             console.log(err);
           });
-      }; */
+      }; 
 
- /*      renderEditForm = () => {
+    renderEditForm = () => {
         if(!this.state.eventName){
           this.getSingleEvent();
         } else {
-        //{...props} => so we can have 'this.props.history' in Edit.js
-        //Preguntar T.A sobre withRouter 
           return (<EditEvent
           theEvent={this.state} 
-          getTheEvent={this.getSingleEvent} 
+          getTheEvent={this.getOneEvent} 
           {...this.props} />
           );
         }
-  } */
-//Preguntar T.A. >> pq no hacer DeleteEvent.js para lo siguiente?:
-// Será solo para el admin??
+  } 
 
-  // DELETE PROJECT:
+
+  // DELETE EVENT: ¿El owner?
    deleteEvent = () => {
     const { id } = this.props.match.params;
     apiService.deleteOneEvent(id)

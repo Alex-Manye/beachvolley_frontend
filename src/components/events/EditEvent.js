@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+//import EventDetails from '.EventDetails/';
+//import events-api from './../../services/events-api';
 
 class EditEvent extends Component {
   constructor(props) {
@@ -10,7 +12,7 @@ class EditEvent extends Component {
         teams: this.props.theEvent.teams, 
         location: this.props.theEvent.location, 
         day: this.props.theEvent.day, 
-        time: this.props.theEvent.ime, 
+        time: this.props.theEvent.time, 
         description: this.props.theEvent.description, 
       };
     }
@@ -66,7 +68,6 @@ class EditEvent extends Component {
     });
   };
  
-
   render() {
     return (
       <div>

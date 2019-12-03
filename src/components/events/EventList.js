@@ -11,36 +11,13 @@ class EventList extends Component {
     this.state = { listOfEvents: [] };
   }
 
-  //¿¿necesitariamos un getAllTeams y getAllEvents??
-/* 
-  getAllTeams = () => {
-    axios.get(`http://localhost:4000/team/`)
-    .then(responseFromApi => {
-      this.setState({
-        listOfTeams: responseFromApi.data
-      });
-    });
-  }; */
-  
-/*   getAllEvents = () => {
-    axios.get(`http://localhost:4000/events/`)
-    .then(responseFromApi => {
-      this.setState({
-        listOfEvents: responseFromApi.data
-      });
-    });
-  }; */
-
   //utilizamos el método componentDidMount() 
   //para obtener los datos de la API;
   async componentDidMount() {
     const listOfEvents= await apiService.getAllEvents()
     console.log(listOfEvents)
-    this.setState({
-      listOfEvents
-    });
- /*    this.getAllTeams();
-    this.getAllEvents(); */
+    this.setState({listOfEvents});
+
   }
 
  // usamos map() para enumerar los proyectos (no olvide dar a cada elemento
@@ -50,21 +27,18 @@ class EventList extends Component {
     return (
       <div>
       <h2>Events</h2>
-        <div style={{ width: "60%", float: "left" }}>
+        <div>
           {listOfEvents.map(event => {
             return (
               <div key={event._id}>
                 <Link to={`/events/${event._id}`}>
                   <h3>{event.eventName}</h3>
                 </Link>
-                {/* <p style={{maxWidth: '400px'}} >{project.description} </p> */}
+                
               </div>
             );
           })}
         </div>
-        {/* <div style={{ width: "40%", float: "right" }}>
-          <AddEvent getData={() => this.getAllEvents()} /> 
-        </div> */}
       </div>
     );
   }

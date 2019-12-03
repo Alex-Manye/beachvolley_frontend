@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 import EventDetails from "./components/events/EventDetails";
 import AddEvent from "./components/events/AddEvent";
 
+
 import Signup from './pages/Signup';		//		<--	Import 
 import Login from './pages/Login';			//		<--	Import 
 import Private from './pages/Private';	//		<--	Import 
@@ -16,10 +17,6 @@ import AnonRoute from "./components/AnonRoute";
 import PrivateRoute from "./components/PrivateRoute";
 
 
-/*
-vemos que el componente `<AddProject />` estará realmente anidado dentro de `<ProjectList />`, así que vamos y elimínelo de App.js y también dejemos de comentar this.props.getData() dentro de `<AddProject />`;
-*/
-
 class App extends Component {
   render() {
     return (
@@ -27,13 +24,20 @@ class App extends Component {
        
       <div className="container">
         <Navbar />
+   
+                  
+
         <Switch>
+          {/* <Route path="/" exact component={Index} /> */}
           <AnonRoute path="/signup" component={Signup} />
           <AnonRoute path="/login" component={Login} />
           <PrivateRoute path="/private" component={Private} />
+          {/* <PrivateRoute path="/myprofile" exact component={MyProfile} /> */}
+
           <PrivateRoute exact path="/events" component={EventList} />
-          <PrivateRoute exact path="/events/add" component={AddEvent} />
-          <PrivateRoute exact path="/events/:id" component={EventDetails} />
+          <PrivateRoute exact path="/addevent" component={AddEvent} />
+          {/* <PrivateRoute exact path="/joinevent" component={JoinEvent} /> */}
+          <PrivateRoute exact path="/events/:id/edit" component={EventDetails} />
 
         </Switch>
       </div>

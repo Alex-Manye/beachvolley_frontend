@@ -1,9 +1,55 @@
-.formulario {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    min-height: 100vh;
-    background-color: aquamarine;
-  }
 
+  form {
+    font-size: 0.8em;
+    margin: 0 auto;
+    width: 300px;
+    padding: 10px;
+    border-radius: 3px;
+    
+    }
+    
+
+    
+    .signup-button{
+        margin-top: 10px;
+        background: rgb(114, 168, 6);
+        border-radius: 10px;
+        width: 50%;
+        color: white;
+    }
+    
+    h1 {
+    text-align: center;
+    }
+    
+    .input, textarea{
+        outline: none;
+        border: 30;
+    
+    }
+    
+    .field{
+        border: solid 3px #18A383;
+        font-size: 30px ;
+        width: 280px;
+        color: #18A383;
+        border-radius: 5px;
+        box-shadow: 3px 3px ;
+    }
+    
+    .field:focus{
+        border-color: #18A383
+    }
+    
+    
+    .center-content{
+        text-align: center;
+    
+    }
+    
+    .signup-container {
+        display: flex;
+        flex-direction: column;;
+        align-items: center;
+    }
+    
