@@ -67,6 +67,8 @@ class EventDetails extends Component {
       {/*           <div>{this.renderEditForm()} </div> */}
                 <button onClick={() => this.deleteEvent()}>Delete Event</button>
                 <br/>
+                <Link to={`/events/${theEvent._id}/edit`}>Edit</Link>
+                <br/>
                 <Link to={"/events"}>Back to events</Link>
             </div>
             );

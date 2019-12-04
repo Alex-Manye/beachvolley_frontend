@@ -6,7 +6,9 @@ import EventList from "./components/events/EventList";
 import Navbar from "./components/navbar/Navbar";
 import EventDetails from "./components/events/EventDetails";
 import AddEvent from "./components/events/AddEvent";
-
+import EditEvent from "./components/events/EditEvent";
+import SearchBox from './components/SearchBox';
+import Scroll from './components/Scroll.js';
 
 import Signup from './pages/Signup';		//		<--	Import 
 import Login from './pages/Login';			//		<--	Import 
@@ -24,20 +26,21 @@ class App extends Component {
        
       <div className="container">
         <Navbar />
-   
-                  
+        <div>
+          <h1>Beach volley tournament App</h1>
 
+        </div>
         <Switch>
           {/* <Route path="/" exact component={Index} /> */}
-          <AnonRoute path="/signup" component={Signup} />
-          <AnonRoute path="/login" component={Login} />
-          <PrivateRoute path="/private" component={Private} />
+          <AnonRoute exact path="/signup" component={Signup} />
+          <AnonRoute exact path="/login" component={Login} />
+          <PrivateRoute exact path="/private" component={Private} />
           {/* <PrivateRoute path="/myprofile" exact component={MyProfile} /> */}
-
-          <PrivateRoute exact path="/events" component={EventList} />
+          <PrivateRoute exact path="/events/:id" component={EventDetails} />
+          <Route exact path="/events" component={EventList} />
           <PrivateRoute exact path="/addevent" component={AddEvent} />
           {/* <PrivateRoute exact path="/joinevent" component={JoinEvent} /> */}
-          <PrivateRoute exact path="/events/:id/edit" component={EventDetails} />
+          <PrivateRoute exact path="/events/:id/edit" component={EditEvent} />
 
         </Switch>
       </div>

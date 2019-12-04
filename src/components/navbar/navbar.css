@@ -6,15 +6,15 @@
         padding:10px;
         height: 6vh;
         align-items: center;
-
+        
 }
 
 .navbarlink {
     color: white;
     font-weight: bold;
     flex-direction: row;
-    margin: 15px
-
+    margin: 15px;
+    list-style-type: none;
 }
 
 .navbarlist{

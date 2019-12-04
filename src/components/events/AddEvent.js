@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import apiService from "../../services/events-api";
 
 class AddEvent extends Component {
   constructor(props) {
@@ -22,20 +23,15 @@ class AddEvent extends Component {
     const description = this.state.description;
 
 
-    axios
-      .post("http://localhost:4000/event/add", 
-      { eventName, location, day, time, description })
-      .then(() => {
-        this.props.getData();
-        this.setState({ 
-          eventName: "", 
-          location: "",
-          day: "",
-          time: "",
-          description: ""
-        });
-      })
-      .catch(error => console.log(error));
+    apiService.addOneEvent({eventName, location, day, time, description})
+
+    this.setState({
+      eventName: "", 
+      location: "",
+      day: "",
+      time: "",
+      description: ""
+    })
   };
 
   handleChange = event => {

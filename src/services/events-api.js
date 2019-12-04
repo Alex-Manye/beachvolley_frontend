@@ -24,6 +24,17 @@ class ApiService {
         return this.api.delete('events/'+eventId)
         .then(response => response.data)
     }
+    addOneEvent(event){
+        return this.api.post("events/add", event)
+        .then(response => response.data)
+    }
+
+    
+    editOneEvent(event){
+        return this.api.put('events/'+event.id, event)
+        .then(response=> response.data)
+    }
+    
 }
 
 const apiService = new ApiService()

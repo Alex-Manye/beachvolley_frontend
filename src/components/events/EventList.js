@@ -4,6 +4,8 @@ import apiService from '../../services/events-api'
 import { Link } from "react-router-dom";
 import axios from "axios";
 import AddEvent from "./AddEvent"; // <== !!!
+import "./EventList.css";
+import EventCard from "./EventCard";
 
 class EventList extends Component {
   constructor() {
@@ -20,22 +22,17 @@ class EventList extends Component {
 
   }
 
- // usamos map() para enumerar los proyectos (no olvide dar a cada elemento
- // el ID de la base de datos como clave con key = {project.\_id});
+ // usamos map() para enumerar los proyectos (no olvide dar a cada elemento el ID de la base de datos como clave con key = {project.\_id});
   render() {
+
     const {listOfEvents} = this.state
     return (
-      <div>
-      <h2>Events</h2>
+      <div className="eventcard">
+      <h2>Beach Volley events</h2>
         <div>
           {listOfEvents.map(event => {
             return (
-              <div key={event._id}>
-                <Link to={`/events/${event._id}`}>
-                  <h3>{event.eventName}</h3>
-                </Link>
-                
-              </div>
+              <EventCard event={event}/>
             );
           })}
         </div>

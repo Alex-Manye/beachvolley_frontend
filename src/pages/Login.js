@@ -3,12 +3,13 @@ import { withAuth } from "../lib/AuthProvider";
 import './login.css'
 
 class Login extends Component {
-  state = { teamName: "", password: "" };
+  state = { teamName: "", email: "", password: "" };
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const { teamName, password } = this.state;
-    this.props.login({ teamName, password });
+    const { teamName, email, password } = this.state;
+    console.log("email: " + email)
+    this.props.login({ teamName, email, password });
   };
 
   handleChange = event => {
@@ -17,11 +18,13 @@ class Login extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { email, teamName, password } = this.state;
 
     return (
       <div >
       <form className="formu" onSubmit={this.handleFormSubmit}>
+        <label>Team Name: </label>
+        <input type="text" name="teamName" value={teamName} placeholder="team Name" onChange={this.handleChange} />
         
          <label>email:</label>
           <input type="text" name="email" value={email} placeholder="email" onChange={this.handleChange} />

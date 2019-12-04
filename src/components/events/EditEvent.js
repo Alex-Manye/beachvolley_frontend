@@ -1,41 +1,41 @@
 import React, { Component } from "react";
 import axios from "axios";
+import {Link} from 'react-router-dom'
+import apiService from "../../services/events-api";
 //import EventDetails from '.EventDetails/';
-//import events-api from './../../services/events-api';
+
 
 class EditEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
     //title: theEvent viene de EventDetails? // Preguntar T.A.
-        eventName: this.props.theEvent.eventName, 
-        teams: this.props.theEvent.teams, 
-        location: this.props.theEvent.location, 
-        day: this.props.theEvent.day, 
-        time: this.props.theEvent.time, 
-        description: this.props.theEvent.description, 
+        eventName: "", 
+        id: "",
+        //teams: this.props.theEvent.teams, 
+        location: "", 
+        day: "", 
+        time: "", 
+        description: "", 
       };
     }
+    async componentDidMount() {
+      const { id } = this.props.match.params;
+      const {eventName,location, day, time, description} = await apiService.getOneEvent(id)
+      this.setState({eventName, id, location, day, time, description })
+      }
+      
 
   handleFormSubmit = event => {
     event.preventDefault();
-    const eventName = this.state.eventName;
-    const teams = this.state.teams;  //Hace falta? preguntar T.A.
+    const eventName = this.state.eventName; 
     const location = this.state.location;
+    const id = this.state.id;
     const day = this.state.day;
     const time = this.state.time;
     const description = this.state.description;
-
-    axios
-      .put(`http://localhost:4000/projects/${this.props.theEvent._id}`, {
-        eventName, teams, location, day, time, description
-      })
-      .then(() => {
-        this.props.getTheProject();
-        // after submitting the form, redirect to '/events'
-        this.props.history.push("/events");
-      })
-      .catch(error => console.log(error));
+    
+    apiService.editOneEvent({eventName, location, id, day, time, description})
   };
 
   handleChangeEventName = event => {
