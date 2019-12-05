@@ -7,8 +7,6 @@ import Navbar from "./components/navbar/Navbar";
 import EventDetails from "./components/events/EventDetails";
 import AddEvent from "./components/events/AddEvent";
 import EditEvent from "./components/events/EditEvent";
-import SearchBox from './components/SearchBox';
-import Scroll from './components/Scroll.js';
 
 import Signup from './pages/Signup';		//		<--	Import 
 import Login from './pages/Login';			//		<--	Import 

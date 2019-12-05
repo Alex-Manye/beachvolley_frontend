@@ -10,15 +10,19 @@ import EventCard from "./EventCard";
 class EventList extends Component {
   constructor() {
     super();
-    this.state = { listOfEvents: [] };
+    this.state = { 
+      listOfEvents: [] 
+    };
   }
 
   //utilizamos el método componentDidMount() 
   //para obtener los datos de la API;
   async componentDidMount() {
-    const listOfEvents= await apiService.getAllEvents()
-    console.log(listOfEvents)
-    this.setState({listOfEvents});
+    const newListOfEvents= await apiService.getAllEvents()
+  
+    this.setState({
+      listOfEvents : newListOfEvents
+    });
 
   }
 
@@ -32,7 +36,7 @@ class EventList extends Component {
         <div>
           {listOfEvents.map(event => {
             return (
-              <EventCard event={event}/>
+              <EventCard key={event._id} event={event}/>
             );
           })}
         </div>

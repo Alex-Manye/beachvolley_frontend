@@ -24,6 +24,7 @@ class ApiService {
         return this.api.delete('events/'+eventId)
         .then(response => response.data)
     }
+
     addOneEvent(event){
         return this.api.post("events/add", event)
         .then(response => response.data)
@@ -33,6 +34,15 @@ class ApiService {
     editOneEvent(event){
         return this.api.put('events/'+event.id, event)
         .then(response=> response.data)
+    }
+
+    joinOneEvent(userId, eventId){
+        return this.api.put(`events/joinOneEvent/${eventId}`, userId)
+        .then((response)=> {
+            console.log('response in api', response.data);
+            return response.data
+        })
+
     }
     
 }
