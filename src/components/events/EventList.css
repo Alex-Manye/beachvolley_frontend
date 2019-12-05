@@ -1,5 +1,10 @@
 .eventcard {
-background: yellow;
-border: 2px;
+background: rgb(247, 155, 80);
+}
+
+h2{
+    color: brown;
+    text-align: center;
+    text-decoration: underline;
 
 }

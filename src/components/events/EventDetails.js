@@ -4,6 +4,7 @@ import { withAuth } from "../../lib/AuthProvider";
 import { Link } from "react-router-dom";
 import EditEvent from "./EditEvent";
 import axios from "axios";
+import "./EventDetails.css";
 
 class EventDetails extends Component {
   constructor(props) {
@@ -73,25 +74,34 @@ class EventDetails extends Component {
   render() {
     const { theEvent } = this.state;
     return (
-      <div>
+      <div> 
+        <div className="eventdetails">
         <h2>Event Details</h2>
-        <h1>{theEvent.eventName}</h1>
-        <p>{theEvent.location}</p>
-        <p>{theEvent.day}</p>
-        <p>{theEvent.time}</p>
-        <p>{theEvent.description}</p>
-        {/*           <div>{this.renderEditForm()} </div> */}
-        <button onClick={() => this.deleteEvent()}>Delete Event</button>
         <br />
+        <p className="evname">{theEvent.eventName}</p>
+        <p>Location: {theEvent.location}</p>
+        <p>Day: {theEvent.day}</p>
+        <p>Time: {theEvent.time}</p>
+        <p>Description: {theEvent.description}</p>
+        </div>
+        <br />
+        
+       <div className="btn-container">
+        <button className="btn" onClick={() => this.deleteEvent()}>Delete Event</button>
+        <br />
+        <button className="btn">
         <Link to={`/events/${theEvent._id}/edit`}>Edit</Link>
+        </button>
         <br />
         {this.state.hasJoined ? (
           <button disabled onClick={() => this.addUserToEvent()}>JOINED!!!</button>
         ) : (
           <button onClick={() => this.addUserToEvent()}>Join event</button>
         )}
+        </div>
         <br />
         <Link to={"/events"}>Back to events</Link>
+        <br />
       </div>
     );
   }

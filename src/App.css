@@ -1,8 +1,14 @@
-/*
+h1{
+  color: orange;
+  font-family: Georgia, 'Times New Roman', Times, serif; 
+}
+
+
+
 .App {
   text-align: center;
 }
-
+/*
 .App-logo {
   height: 40vmin;
 }
