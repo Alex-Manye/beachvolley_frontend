@@ -35,7 +35,7 @@ class Signup extends Component {
           <input type="text" name="teamName" placeholder="Team Name" value={teamName} onChange={this.handleChange} />
         
           <label>email:</label>
-          <input type="text" name="email" placeholder="email" value={email} onChange={this.handleChange} />
+          <input type="email" name="email" placeholder="email" value={email} onChange={this.handleChange} />
 
           <label>Password:</label>
           <input type="password" name="password" placeholder="password" value={password} onChange={this.handleChange} />  

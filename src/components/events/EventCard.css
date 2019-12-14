@@ -1,6 +1,11 @@
 .tc{
     width: 80vw;
     margin-left: 22px;
-    border: 3px solid rgb(4, 160, 4);
+    color: #262626;
+    background-color:rgb(252, 223, 144);
+
+    border: 5px solid #7F7DC4;
     justify-content: center;
+    padding: 2%;
+    border-radius: 15px;
 }

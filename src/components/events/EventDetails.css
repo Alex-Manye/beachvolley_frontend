@@ -1,14 +1,17 @@
 *{
-    color: rebeccapurple;
+    color: #5b5b5b;
 }
 
 .eventdetails{
-    padding: 5%;
-    font-weight: bold;
-    border: 3px solid rgb(4, 160, 4);
-   
-    background-color: rgb(248, 205, 166);
-    border-radius: 10px;
+    width: 80vw;
+    margin-left: 22px;
+    color: #262626;
+    background-color:rgb(252, 223, 144);
+
+    border: 5px solid #7F7DC4;
+    justify-content: center;
+    padding: 2%;
+    border-radius: 15px;
 }
 
 .evname{
@@ -16,6 +19,12 @@
     font-size: 20px;
     font-family:Arial, Helvetica, sans-serif;
 }
+
+.evname2{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 
 .btn-container{
     display: flex;

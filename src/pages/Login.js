@@ -27,7 +27,7 @@ class Login extends Component {
         <input type="text" name="teamName" value={teamName} placeholder="team Name" onChange={this.handleChange} />
         
          <label>email:</label>
-          <input type="text" name="email" value={email} placeholder="email" onChange={this.handleChange} />
+          <input type="email" name="email" value={email} placeholder="email" onChange={this.handleChange} />
 
           <label>Password:</label>
           <input type="password" name="password" placeholder="password" value={password} onChange={this.handleChange} />  

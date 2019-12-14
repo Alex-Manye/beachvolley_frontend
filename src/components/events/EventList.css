@@ -1,9 +1,10 @@
 .eventcard {
-background: rgb(247, 155, 80);
+ 
+ background: rgb(36, 187, 233)
 }
 
 h2{
-    color: brown;
+    color: #322D67;
     text-align: center;
     text-decoration: underline;
 

@@ -79,7 +79,7 @@ class EventDetails extends Component {
         <h2>Event Details</h2>
         <br />
         <p className="evname">{theEvent.eventName}</p>
-        <p>Location: {theEvent.location}</p>
+        <p className="evname2">Location: {theEvent.location}</p>
         <p>Day: {theEvent.day}</p>
         <p>Time: {theEvent.time}</p>
         <p>Description: {theEvent.description}</p>
@@ -89,9 +89,9 @@ class EventDetails extends Component {
        <div className="btn-container">
         <button className="btn" onClick={() => this.deleteEvent()}>Delete Event</button>
         <br />
-        <button className="btn">
-        <Link to={`/events/${theEvent._id}/edit`}>Edit</Link>
-        </button>
+        <Link to={`/events/${theEvent._id}/edit`}>
+          <button className="btn">Edit</button>
+        </Link>
         <br />
         {this.state.hasJoined ? (
           <button disabled onClick={() => this.addUserToEvent()}>JOINED!!!</button>
