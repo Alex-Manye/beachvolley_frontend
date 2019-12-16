@@ -1,68 +1,111 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Beach volley tournament
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+This is an app (in React) for beach volley players who want to join sport events created by other beach volley players. The goal is to help users to organize better their sports championship. 
 
-### `npm start`
+The user will be able to register to see all sports events information and be able to register in the different matchs.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Now, in the MVP, the users register as a team. In future developments, I will add a USER Model (now is Team Model) and the users will be able to create teams and join the matchs with their teams.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## User Stories
 
-### `npm test`
+# ANON
+- **404:**  As an anon/team of users I can see a 404 page if I try to reach a page that does not exist so that I know it's my fault.
+- **SignUp:**  As an anon/team of users I can sign up in the platform so that I see a list with the sport events.
+- **Login:**  As a Anon I can login to the platform so that I can register my team in the  beach volley events 
+- **Home Page:** As an anon I can see the home page with the sports events (but I am not able to join any event until I register in the app) and I can sign up/login form.
+- **sports events' list (Anon):** As an anon I can see a list of sport events, and filter them, and view the details of each sport match
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# USER
 
-### `npm run build`
+- **Add sport events:** As a user I can add an event so that the players can watch the information and register
+- **sports events' list (User):** As a user I want to view the next sport events so that I can register in all that I want to participate.
+- **sports events' details (User):** As a user I can click in any sport event to view more information so that I can decide if I want to join it.
+- **edit events' details (User/Owner):** As a user who has created an event (owner) I can edit event's details so taht I can update its information.
+- **delete events (User/Owner):** As a user who has created an event (owner) I can delete that event so that the event's list will be updated with teh most recent events.
+- **join events (User):** As a user I can join any sport event from the list and I will receive a message so that I will know for sure that I will be registered. 
+- **Logout:** as a team/user I can logout from the platform
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Backlog
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **teams registered in an event:** As a owner of an event I can view the teams registered to that event so that I can organize it better (backlog)
+- **editProfile:** as a team/user i can edit my profile with aditional and usefull data 
+- **sort sport events by date:** As a User i can seen sports events ordered by date so that I can
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Models
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Team model
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+teamName: String,
+email: String, unique & required 
+password: String, required 
+playerName1: String,
+IDPlayer1: String,
+playerName2: String,
+IDPlayer2: String,
+events: [{type: ObjectId, ref:"Event"}],
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
 
-## Learn More
+Event model
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+eventName: String, 
+teams: ObjectId<User> 
+owner: ObjectId<User> 
+location: String,
+day: String, 
+time: String, 
+description: String,
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+# Client / Frontend
 
-### Analyzing the Bundle Size
+## Routes
+| Path | Component | Permissions | Behavior |
+| - | - | - | - |
+| `/` | HomePage > MainHeader, WhatIs, ChallengeDetail, HowTo | public | Home page with 4 sections: Sport events, Add an event, Profile, Logout |
+| `/not-found` | NotFoundPage | public | Not found page |
+| `/signup` | SignupPage | public | Sign up page |
+| `/login` | LoginPage | public | Log in page |
+| `/team/<:teamId>` | UserPage > UserProfile | user only | Shows the details of a user and all user's challenges |
+| `/user/<:userId>/profile` | UserPage > UserProfile | user only | Shows the details of a user/team |
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+| `/user/edit` | ProfilePage | user only | Profile form for update |
 
-### Making a Progressive Web App
+| `/events` | ChallengeListPage > ChallengeCard, ChallengeFilter, ChallengeSearcher, StatusToggle | public | Shows all challenges in a list |
+| `/events/:eventsId` | EventDetailPage > EventDetail | user only | Shows the details of a sports event |
+| `/events/add` | AddEditPage | user only | Form for add a new event |
+| `/events/edit` | EventPage |owner only | Event form for update |
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+| `/events/delete` | DeletePage |owner only | delete button |
 
-### Advanced Configuration
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
 
-### Deployment
+<br>## API Endpoints (backend routes)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+| HTTP Method | URL | Request Body | Success status | Error Status | Description |
+| - | - | - | - | - | - |
+| GET | /user/:id | id | 200 | 404 | get other user data|
+| PUT | /user/edit | {userUpdate} | | | edit user data |
+| PUT | /user/password/edit | {newPassword} | | | edit password |
+| GET | /auth/me | | 201 | 404 | get my user from session |
+| POST | /auth/signup | {teamname, email, password} | 201 | 404 | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST | /auth/login | {teamName, email, password, playerName1, playerName2} | 200 | 401 | Checks if fields not empty (422), if user exists (404), and if password challenges (404), then stores user in session |
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Links
+Trello board : https://trello.com/b/biTYBdSo/becah-volley-app
+
+Git
+Client repository Link: https://github.com/Alex-Manye/beachvolley_frontend
+
+Server repository Link: https://github.com/Alex-Manye/beachvolley_backend
+
+© 2019 GitHub, Inc.
